@@ -7,13 +7,15 @@
 <p align="center"><strong>Let your AI return the fix — not the entire script.</strong></p>
 
 <p align="center">
-  <a href="bp_surgicalpatcher_v2.py"><img alt="Version 2.0" src="https://img.shields.io/badge/version-v2.0-38bdf8?style=flat-square&labelColor=111827"></a>
+  <a href="https://github.com/BATPANn/BP_SurgicalPatcher/releases/tag/v2.0"><img alt="Version 2.0" src="https://img.shields.io/badge/version-v2.0-38bdf8?style=flat-square&labelColor=111827"></a>
   <a href="https://www.python.org/"><img alt="Python 3.10 or newer" src="https://img.shields.io/badge/Python-3.10%2B-60a5fa?style=flat-square&labelColor=111827"></a>
   <a href="https://pypi.org/project/PyQt6/"><img alt="PyQt6 desktop application" src="https://img.shields.io/badge/UI-PyQt6-a78bfa?style=flat-square&labelColor=111827"></a>
+  <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-4ade80?style=flat-square&labelColor=111827"></a>
   <img alt="Local clipboard workflow" src="https://img.shields.io/badge/workflow-local%20%2B%20clipboard-4ade80?style=flat-square&labelColor=111827">
 </p>
 
 <p align="center">
+  <a href="https://github.com/BATPANn/BP_SurgicalPatcher/releases/latest">Download v2.0</a> ·
   <a href="#-why-surgical-patcher">Why use it?</a> ·
   <a href="#-installation">Installation</a> ·
   <a href="#-quick-start">Quick start</a> ·
@@ -75,6 +77,8 @@ The app reads target files as **UTF-8**, rejects files it cannot decode, and pre
 
 ## 📥 Installation
 
+> **Prefer a download?** Get `bp_surgicalpatcher_v2.py` and `requirements.txt` from the [v2.0 release](https://github.com/BATPANn/BP_SurgicalPatcher/releases/tag/v2.0), or download its source-code ZIP. Put the files in one folder, open a terminal there, and follow the virtual-environment, dependency, and launch commands below. Skip the `git clone` and `cd` commands. The release contains Python source, not a packaged executable.
+
 ### Windows
 
 1. Install Python from [python.org](https://www.python.org/downloads/) and enable **Add Python to PATH**, or install it with `winget`:
@@ -95,7 +99,7 @@ The app reads target files as **UTF-8**, rejects files it cannot decode, and pre
    .\.venv\Scripts\python.exe bp_surgicalpatcher_v2.py
    ```
 
-   If you downloaded a ZIP, extract it and open PowerShell inside the extracted folder before running the `py` and `.venv` commands. A private repository requires a GitHub account with access.
+   If you downloaded a ZIP, extract it and open PowerShell inside the extracted folder before running the `py` and `.venv` commands. If you are using a private copy of the repository, your GitHub account needs access.
 
 ### macOS / Linux
 
@@ -294,16 +298,18 @@ Use your virtual environment's Python if it is not activated. The tests cover pa
 
 ```text
 BP_SurgicalPatcher/
+├── .github/workflows/         # Tests and release-file uploads
 ├── bp_surgicalpatcher_v2.py   # Desktop application and patch engine
 ├── requirements.txt           # PyQt6 dependency
 ├── tests/                     # Automated regression tests
 ├── assets/                    # Project banner and app preview
+├── LICENSE                    # MIT license
 └── README.md                  # You are here
 ```
 
 ## 📄 License
 
-No license has been specified for this repository yet. Please contact the repository owner before reusing or distributing the code.
+This project's source is available under the [MIT License](LICENSE). You are free to use, modify, and distribute it, including commercially, provided you retain the copyright and license notice. PyQt6 has its own licensing terms, which should be reviewed separately when distributing the application.
 
 ---
 
