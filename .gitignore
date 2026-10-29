@@ -1,0 +1,17 @@
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Surgical Patcher's local settings and backups
+patcher_settings.json
+.patch_backups/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+
+# Local tooling cache
+.cache/
