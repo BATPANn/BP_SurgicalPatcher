@@ -298,6 +298,7 @@ Use your virtual environment's Python if it is not activated. The tests cover pa
 
 ```text
 BP_SurgicalPatcher/
+├── .github/workflows/         # Tests and release-file uploads
 ├── bp_surgicalpatcher_v2.py   # Desktop application and patch engine
 ├── requirements.txt           # PyQt6 dependency
 ├── tests/                     # Automated regression tests
