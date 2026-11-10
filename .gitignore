@@ -7,6 +7,7 @@ venv/
 
 # Surgical Patcher's local settings and backups
 patcher_settings.json
+patcher_v2_settings.json
 .patch_backups/
 
 # OS/editor noise
