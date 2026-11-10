@@ -34,12 +34,38 @@ jobs:
         with:
           ref: ${{ steps.release-ref.outputs.ref }}
           persist-credentials: false
+      - name: Select the script matching the release version
+        id: release-script
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
+        run: |
+          python3 - <<'PY'
+          import ast
+          import os
+          from pathlib import Path
+
+          tag = os.environ["RELEASE_TAG"]
+          matches = []
+          for path in Path(".").glob("*.py"):
+              tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+              for node in tree.body:
+                  if (isinstance(node, ast.Assign)
+                          and any(isinstance(target, ast.Name) and target.id == "APP_VERSION" for target in node.targets)
+                          and isinstance(node.value, ast.Constant)
+                          and node.value.value == tag):
+                      matches.append(path.name)
+          if len(matches) != 1:
+              raise SystemExit(f"Expected one script with APP_VERSION={tag!r}; found {matches!r}")
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+              output.write(f"script={matches[0]}\n")
+          PY
       - name: Upload missing source files
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
+          SCRIPT_FILE: ${{ steps.release-script.outputs.script }}
         run: |
-          for file in bp_surgicalpatcher_v2.py requirements.txt LICENSE; do
+          for file in "$SCRIPT_FILE" requirements.txt LICENSE; do
             if gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name' | grep -Fxq -- "$file"; then
               echo "$file is already attached; skipping."
             else
